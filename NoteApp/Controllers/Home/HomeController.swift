@@ -6,3 +6,29 @@
 //
 
 import Foundation
+
+protocol HomeControllerProtocol {
+    func onGetNotes()
+    
+    func onSuccessNotes(notes: [Note])
+}
+
+class HomeController: HomeControllerProtocol {
+    
+    private var model: HomeModelProtocol?
+    private var view: HomeViewProtocol?
+    
+    init(view: HomeViewProtocol) {
+        self.model = HomeModel(controller: self)
+        self.view = view
+    }
+    
+    func onGetNotes() {
+        model?.getNotes()
+    }
+    
+    func onSuccessNotes(notes: [Note]) {
+        view?.successNotes(notes: notes)
+        
+    }
+}

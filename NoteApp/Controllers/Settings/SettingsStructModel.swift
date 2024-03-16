@@ -11,4 +11,5 @@ struct Setting {
     var logo: UIImage?
     var title: String
     var actionNeeded: Bool
+    var switchNeeded: Bool
 }
