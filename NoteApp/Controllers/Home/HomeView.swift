@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeViewProtocol {
+protocol HomeViewProtocol: AnyObject {
     func successNotes(notes: [Note])
 }
 

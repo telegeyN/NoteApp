@@ -27,6 +27,11 @@
 		72F536C62BA591E5009778A7 /* SettingsStructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536C52BA591E5009778A7 /* SettingsStructModel.swift */; };
 		72F536C82BA5929B009778A7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536C72BA5929B009778A7 /* SettingsController.swift */; };
 		72F536CA2BA592C4009778A7 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536C92BA592C4009778A7 /* SettingsModel.swift */; };
+		72F536CD2BAADB40009778A7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536CC2BAADB40009778A7 /* OnboardingView.swift */; };
+		72F536CF2BAADC32009778A7 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536CE2BAADC32009778A7 /* OnboardingCell.swift */; };
+		72F536D12BAAE51D009778A7 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536D02BAAE51D009778A7 /* OnboardingController.swift */; };
+		72F536D32BAAE528009778A7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536D22BAAE528009778A7 /* OnboardingModel.swift */; };
+		72F536D52BAAE537009778A7 /* OnboardingStructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536D42BAAE537009778A7 /* OnboardingStructModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,11 @@
 		72F536C52BA591E5009778A7 /* SettingsStructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStructModel.swift; sourceTree = "<group>"; };
 		72F536C72BA5929B009778A7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		72F536C92BA592C4009778A7 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		72F536CC2BAADB40009778A7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		72F536CE2BAADC32009778A7 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		72F536D02BAAE51D009778A7 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		72F536D22BAAE528009778A7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		72F536D42BAAE537009778A7 /* OnboardingStructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStructModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,7 @@
 		72F536A22BA4C50E009778A7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				72F536CB2BAADA54009778A7 /* Onboarding */,
 				72F536B02BA56D1A009778A7 /* Home */,
 				72F536BC2BA584E6009778A7 /* Settings */,
 			);
@@ -171,6 +182,18 @@
 				72F536C52BA591E5009778A7 /* SettingsStructModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		72F536CB2BAADA54009778A7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				72F536CE2BAADC32009778A7 /* OnboardingCell.swift */,
+				72F536CC2BAADB40009778A7 /* OnboardingView.swift */,
+				72F536D02BAAE51D009778A7 /* OnboardingController.swift */,
+				72F536D22BAAE528009778A7 /* OnboardingModel.swift */,
+				72F536D42BAAE537009778A7 /* OnboardingStructModel.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,19 +269,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72F536CF2BAADC32009778A7 /* OnboardingCell.swift in Sources */,
 				72F536922BA4C443009778A7 /* HomeView.swift in Sources */,
 				72F536C62BA591E5009778A7 /* SettingsStructModel.swift in Sources */,
 				72F536B32BA56D63009778A7 /* MakerView.swift in Sources */,
 				72F536C42BA58782009778A7 /* SettingsCell.swift in Sources */,
 				72F536B92BA57CF5009778A7 /* HomeModel.swift in Sources */,
 				72F536A92BA4C6A1009778A7 /* Fonts.swift in Sources */,
+				72F536D32BAAE528009778A7 /* OnboardingModel.swift in Sources */,
 				72F536CA2BA592C4009778A7 /* SettingsModel.swift in Sources */,
+				72F536D12BAAE51D009778A7 /* OnboardingController.swift in Sources */,
 				72F536A62BA4C56D009778A7 /* Color.swift in Sources */,
 				72F536BB2BA57FB7009778A7 /* NoteStructModel.swift in Sources */,
 				72F536B72BA57CDC009778A7 /* HomeController.swift in Sources */,
 				72F5368E2BA4C443009778A7 /* AppDelegate.swift in Sources */,
 				72F536C82BA5929B009778A7 /* SettingsController.swift in Sources */,
+				72F536D52BAAE537009778A7 /* OnboardingStructModel.swift in Sources */,
 				72F536B52BA574E7009778A7 /* NoteCell.swift in Sources */,
+				72F536CD2BAADB40009778A7 /* OnboardingView.swift in Sources */,
 				72F536902BA4C443009778A7 /* SceneDelegate.swift in Sources */,
 				72F536C02BA58557009778A7 /* SettingsView.swift in Sources */,
 			);

@@ -14,7 +14,7 @@ protocol HomeModelProtocol {
 
 class HomeModel: HomeModelProtocol {
     
-    var controller: HomeControllerProtocol?
+    weak var controller: HomeControllerProtocol?
     
     var notes: [Note] = [
         Note(title: "School notes", bgColor: .init(hex: "#D9BBF9")),

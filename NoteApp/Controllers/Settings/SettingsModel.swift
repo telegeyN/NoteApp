@@ -9,25 +9,25 @@ import Foundation
 import UIKit
 
 protocol SettingsModelProtocol {
-    func getSets()
+    func getSettings()
 }
 
 class SettingsModel: SettingsModelProtocol {
     
-    var controller: SettingsControllerProtocol?
+    weak var controller: SettingsControllerProtocol?
     
     var settings: [Setting] = [
-        Setting(logo: UIImage(systemName: "globe"), title: "Language", actionNeeded: true, switchNeeded: false),
-        Setting(logo: UIImage(systemName: "moon"), title: "Night Shift", actionNeeded: false, switchNeeded: true),
-        Setting(logo: UIImage(systemName: "trash"), title: "Clear Data", actionNeeded: false, switchNeeded: false)
+        Setting(logo: UIImage(systemName: "globe"), title: "Language", type: .withRightBtn),
+        Setting(logo: UIImage(systemName: "moon"), title: "Night Shift", type: .withSwitch),
+        Setting(logo: UIImage(systemName: "trash"), title: "Clear Data", type: .usual)
     ]
     
     init(controller: SettingsControllerProtocol) {
         self.controller = controller
     }
     
-    func getSets() {
-        controller?.onSuccessSets(settings: settings)
+    func getSettings() {
+        controller?.onSuccessSettings(settings: settings)
     }
     
 }

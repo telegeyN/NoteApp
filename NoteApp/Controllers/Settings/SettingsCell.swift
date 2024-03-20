@@ -7,11 +7,28 @@
 
 import UIKit
 
+enum SettingsType {
+    case withRightBtn
+    case withSwitch
+    case usual
+}
+
 class SettingsCell: UITableViewCell {
     
     private lazy var logoImage = MakerView.shared.makerImage()
     private lazy var titleLabel = MakerView.shared.makeLabel(font: Fonts.regular.size(17))
-    private lazy var actionButton = UIButton(type: .system)
+//    private lazy var actionButton = UIButton(type: .system)
+    private lazy var actionButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("English", for: .normal)
+        view.setTitleColor(.lightGray, for: .normal)
+        view.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        view.tintColor = .black
+        view.semanticContentAttribute = .forceRightToLeft
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+        
+    }()
     private lazy var modeSwitch = UISwitch()
     
     
@@ -38,44 +55,38 @@ class SettingsCell: UITableViewCell {
             titleLabel.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor, constant: 16)
         ])
+        
+        contentView.addSubview(actionButton)
+        NSLayoutConstraint.activate([
+            actionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
+        ])
+        actionButton.addTarget(self, action: #selector(actionBtnTapped), for: .touchUpInside)
+        
+        contentView.addSubview(modeSwitch)
+        modeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            modeSwitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            modeSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            modeSwitch.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
     
     func setup(settings: Setting) {
         logoImage.image = settings.logo
         logoImage.tintColor = .black
         titleLabel.text = settings.title
-        if settings.actionNeeded {
-            setupActionButton()
-        }
-        if settings.switchNeeded {
-            setupModeSwitch()
+        if settings.type == .withRightBtn {
+            modeSwitch.isHidden = true
+        } else if settings.type == .withSwitch {
+            actionButton.isHidden = true
+        } else if settings.type == .usual {
+            modeSwitch.isHidden = true
+            actionButton.isHidden = true
         }
     }
-
-    private func setupActionButton() {
-        actionButton.setTitle("English", for: .normal)
-        actionButton.setTitleColor(.lightGray, for: .normal)
-        actionButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        actionButton.tintColor = .black
-        actionButton.semanticContentAttribute = .forceRightToLeft
-        contentView.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            actionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
-        ])
-    }
-
-    private func setupModeSwitch() {
-        contentView.addSubview(modeSwitch)
-        modeSwitch.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            modeSwitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            modeSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            modeSwitch.heightAnchor.constraint(equalToConstant: 20)
-        ])
+    
+    @objc func actionBtnTapped() {
     }
     
     required init?(coder: NSCoder) {

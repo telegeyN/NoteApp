@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HomeControllerProtocol {
+protocol HomeControllerProtocol: AnyObject {
     func onGetNotes()
     
     func onSuccessNotes(notes: [Note])
@@ -16,7 +16,7 @@ protocol HomeControllerProtocol {
 class HomeController: HomeControllerProtocol {
     
     private var model: HomeModelProtocol?
-    private var view: HomeViewProtocol?
+    weak var view: HomeViewProtocol?
     
     init(view: HomeViewProtocol) {
         self.model = HomeModel(controller: self)

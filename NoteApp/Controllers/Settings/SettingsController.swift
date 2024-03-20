@@ -7,28 +7,28 @@
 
 import Foundation
 
-protocol SettingsControllerProtocol {
-    func onGetSets()
+protocol SettingsControllerProtocol: AnyObject {
+    func onGetSettings()
     
-    func onSuccessSets(settings: [Setting])
+    func onSuccessSettings(settings: [Setting])
 }
 
 class SettingsController: SettingsControllerProtocol {
     
     private var model: SettingsModelProtocol?
-    private var view: SettingsViewProtocol?
+    weak var view: SettingsViewProtocol?
     
     init(view: SettingsViewProtocol) {
         self.model = SettingsModel(controller: self)
         self.view = view
     }
     
-    func onGetSets() {
-        model?.getSets()
+    func onGetSettings() {
+        model?.getSettings()
     }
     
-    func onSuccessSets(settings: [Setting]) {
-        view?.successSets(settings: settings)
+    func onSuccessSettings(settings: [Setting]) {
+        view?.successSettings(settings: settings)
         
     }
 }

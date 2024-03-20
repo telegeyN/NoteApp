@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol SettingsViewProtocol {
-    func successSets(settings: [Setting])
+protocol SettingsViewProtocol: AnyObject {
+    func successSettings(settings: [Setting])
 }
 
 class SettingsView: UIViewController {
@@ -26,7 +26,7 @@ class SettingsView: UIViewController {
         view.backgroundColor = .systemBackground
         setupNavItem()
         setupConstraints()
-        controller?.onGetSets()
+        controller?.onGetSettings()
     }
     
     private func setupNavItem() {
@@ -87,7 +87,7 @@ extension SettingsView: UITableViewDelegate {
 
 extension SettingsView: SettingsViewProtocol{
     
-    func successSets(settings: [Setting]){
+    func successSettings(settings: [Setting]){
         self.settings = settings
         tableView.reloadData()
     }
