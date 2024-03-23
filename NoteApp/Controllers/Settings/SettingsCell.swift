@@ -13,11 +13,16 @@ enum SettingsType {
     case usual
 }
 
+protocol SettingsCellDelegate: AnyObject {
+    func didSwitchOn(isOn: Bool)
+}
+
 class SettingsCell: UITableViewCell {
+    
+    weak var delegate: SettingsCellDelegate?
     
     private lazy var logoImage = MakerView.shared.makerImage()
     private lazy var titleLabel = MakerView.shared.makeLabel(font: Fonts.regular.size(17))
-//    private lazy var actionButton = UIButton(type: .system)
     private lazy var actionButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("English", for: .normal)
@@ -29,14 +34,22 @@ class SettingsCell: UITableViewCell {
         return view
         
     }()
-    private lazy var modeSwitch = UISwitch()
+    
+    private lazy var modeSwitch: UISwitch = {
+        let view = UISwitch()
+        let isOn = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        view.isOn = isOn
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addTarget(self, action: #selector(switchTapped), for: .valueChanged)
+        return view
+    }()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupConstraints()
-        contentView.layer.cornerRadius = 12
         contentView.backgroundColor = .init(hex: "#EEEEEF")
     }
     
@@ -84,6 +97,10 @@ class SettingsCell: UITableViewCell {
             modeSwitch.isHidden = true
             actionButton.isHidden = true
         }
+    }
+    
+    @objc func switchTapped() {
+        delegate?.didSwitchOn(isOn: modeSwitch.isOn)
     }
     
     @objc func actionBtnTapped() {

@@ -11,8 +11,13 @@ protocol OnboardingViewProtocol: AnyObject {
     func successOnboardingDetails (details: [Detail])
 }
 
+protocol OnboardingViewDelegate: AnyObject {
+    func hasBeenShown(beenShown: Bool)
+}
+
 class OnboardingView: UIViewController {
     
+    weak var delegate: OnboardingViewDelegate?
     private var details: [Detail] = []
     private var controller: OnboardingControllerProtocol?
     
@@ -24,7 +29,7 @@ class OnboardingView: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.showsVerticalScrollIndicator = true
+        cv.showsHorizontalScrollIndicator = true
         cv.clipsToBounds = false
         return cv
     }()
@@ -32,7 +37,7 @@ class OnboardingView: UIViewController {
     private lazy var skipButton = MakerView.shared.makeSimpleButton(backgroundColor: .clear, title: "Skip",titleColor: .init(hex: "#FF3D3D") ,titleFont: Fonts.regular.size(16))
     
     private lazy var nextButton = MakerView.shared.makeSimpleButton(title: "Next",titleFont: Fonts.regular.size(16), cornerRadius: 22)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +46,16 @@ class OnboardingView: UIViewController {
         controller = OnboardingController(view: self)
         setupConstraints()
         controller?.onGetOnboardingDetails()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        if isDarkTheme == true {
+            view.overrideUserInterfaceStyle = .dark
+        } else {
+            view.overrideUserInterfaceStyle = .light
+        }
     }
     
     private func setupConstraints() {
@@ -62,7 +77,7 @@ class OnboardingView: UIViewController {
             nextButton.widthAnchor.constraint(equalToConstant: 173)
         ])
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-
+        
         view.addSubview(onboardingCollectionView)
         NSLayoutConstraint.activate([
             onboardingCollectionView.topAnchor.constraint(equalTo: view.topAnchor,constant: 190),
@@ -77,18 +92,20 @@ class OnboardingView: UIViewController {
     @objc private func skipButtonTapped() {
         let vc = HomeView()
         navigationController?.pushViewController(vc, animated: true)
+        delegate = self
+        delegate?.hasBeenShown(beenShown: true)
     }
     
     @objc private func nextButtonTapped() {
         guard !details.isEmpty else { return }
-        
-        let nextIndex = Int(onboardingCollectionView.contentOffset.x / onboardingCollectionView.bounds.width) + 1
-        if nextIndex == details.count {
+        guard let visibleIndexPath = onboardingCollectionView.indexPathsForVisibleItems.first else { return }
+        if visibleIndexPath.item == details.count - 1 {
             let vc = HomeView()
             navigationController?.pushViewController(vc, animated: true)
+            delegate?.hasBeenShown(beenShown: true)
         } else {
-            let indexPath = IndexPath(item: nextIndex, section: 0)
-            onboardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            let nextIndexPath = IndexPath(item: visibleIndexPath.item + 1, section: visibleIndexPath.section)
+            onboardingCollectionView.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
         }
     }
 }
@@ -114,3 +131,8 @@ extension OnboardingView: OnboardingViewProtocol{
     }
 }
 
+extension OnboardingView: OnboardingViewDelegate {
+    func hasBeenShown(beenShown: Bool) {
+        UserDefaults.standard.setValue(beenShown, forKey: "isOnBoardBeenShown")
+    }
+}

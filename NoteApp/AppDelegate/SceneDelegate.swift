@@ -14,10 +14,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+        var initialView: UIViewController?
         window = UIWindow(windowScene: windowScene)
-        let root = UINavigationController(rootViewController: OnboardingView())
+        
+        if UserDefaults.standard.bool(forKey: "isOnBoardBeenShown") == true {
+            initialView = HomeView()
+        } else {
+            initialView = OnboardingView()
+        }
+        let root = UINavigationController(rootViewController: initialView!)
         window?.rootViewController = root
+    
+        let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        
+        if isDarkTheme == true {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .light
+        }
         window?.makeKeyAndVisible()
     }
 

@@ -53,6 +53,21 @@ class HomeView: UIViewController {
         controller?.onGetNotes()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        if isDarkTheme == true {
+            view.overrideUserInterfaceStyle = .dark
+        } else {
+            view.overrideUserInterfaceStyle = .light
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateButtonColors()
+    }
+    
     private func setupNavItem() {
         navigationItem.title = "Main"
         let settingsBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsButtonTapped))
@@ -99,6 +114,19 @@ class HomeView: UIViewController {
             addButton.heightAnchor.constraint(equalToConstant: 42),
             addButton.widthAnchor.constraint(equalToConstant: 42)
         ])
+    }
+    
+    private func updateButtonColors() {
+        let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        if isDarkTheme == true {
+            navigationItem.leftBarButtonItem?.tintColor = .white
+            navigationItem.rightBarButtonItem?.tintColor = .white
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = .black
+            navigationItem.rightBarButtonItem?.tintColor = .black
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        }
     }
 
 }
