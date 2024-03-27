@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SettingsControllerProtocol: AnyObject {
+    
     func onGetSettings()
     
     func onSuccessSettings(settings: [Setting])

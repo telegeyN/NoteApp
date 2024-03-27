@@ -16,6 +16,7 @@ class NoteCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        contentView.backgroundColor = .init(hex: "#D9BBF9")
         contentView.layer.cornerRadius = 12
     }
     
@@ -29,9 +30,8 @@ class NoteCell: UICollectionViewCell {
         ])
     }
     
-    func setup(notes: Note) {
-        titleLabel.text = notes.title
-        contentView.backgroundColor = notes.bgColor
+    func setup(title: String) {
+        titleLabel.text = title
     }
     
     required init?(coder: NSCoder) {

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72A6BEB62BB4342900B7DBAC /* Note.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEB42BB4342900B7DBAC /* Note.xcdatamodeld */; };
+		72A6BEB92BB4351700B7DBAC /* Notes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEB72BB4351700B7DBAC /* Notes+CoreDataClass.swift */; };
+		72A6BEBA2BB4351700B7DBAC /* Notes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEB82BB4351700B7DBAC /* Notes+CoreDataProperties.swift */; };
+		72A6BEBD2BB4355D00B7DBAC /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEBC2BB4355D00B7DBAC /* CoreDataService.swift */; };
+		72A6BEC02BB43AF100B7DBAC /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEBF2BB43AF100B7DBAC /* AddNoteView.swift */; };
+		72A6BEC22BB44B9F00B7DBAC /* AddNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEC12BB44B9F00B7DBAC /* AddNoteController.swift */; };
+		72A6BEC42BB44BAB00B7DBAC /* AddNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6BEC32BB44BAB00B7DBAC /* AddNoteModel.swift */; };
 		72F5368E2BA4C443009778A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F5368D2BA4C443009778A7 /* AppDelegate.swift */; };
 		72F536902BA4C443009778A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F5368F2BA4C443009778A7 /* SceneDelegate.swift */; };
 		72F536922BA4C443009778A7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536912BA4C443009778A7 /* HomeView.swift */; };
@@ -21,7 +28,6 @@
 		72F536B52BA574E7009778A7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536B42BA574E7009778A7 /* NoteCell.swift */; };
 		72F536B72BA57CDC009778A7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536B62BA57CDC009778A7 /* HomeController.swift */; };
 		72F536B92BA57CF5009778A7 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536B82BA57CF5009778A7 /* HomeModel.swift */; };
-		72F536BB2BA57FB7009778A7 /* NoteStructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536BA2BA57FB7009778A7 /* NoteStructModel.swift */; };
 		72F536C02BA58557009778A7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536BF2BA58557009778A7 /* SettingsView.swift */; };
 		72F536C42BA58782009778A7 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536C32BA58782009778A7 /* SettingsCell.swift */; };
 		72F536C62BA591E5009778A7 /* SettingsStructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F536C52BA591E5009778A7 /* SettingsStructModel.swift */; };
@@ -35,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72A6BEB52BB4342900B7DBAC /* Note.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Note.xcdatamodel; sourceTree = "<group>"; };
+		72A6BEB72BB4351700B7DBAC /* Notes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		72A6BEB82BB4351700B7DBAC /* Notes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		72A6BEBC2BB4355D00B7DBAC /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		72A6BEBF2BB43AF100B7DBAC /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
+		72A6BEC12BB44B9F00B7DBAC /* AddNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteController.swift; sourceTree = "<group>"; };
+		72A6BEC32BB44BAB00B7DBAC /* AddNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteModel.swift; sourceTree = "<group>"; };
 		72F5368A2BA4C443009778A7 /* NoteApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F5368D2BA4C443009778A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72F5368F2BA4C443009778A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +64,6 @@
 		72F536B42BA574E7009778A7 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		72F536B62BA57CDC009778A7 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		72F536B82BA57CF5009778A7 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		72F536BA2BA57FB7009778A7 /* NoteStructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStructModel.swift; sourceTree = "<group>"; };
 		72F536BF2BA58557009778A7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		72F536C32BA58782009778A7 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		72F536C52BA591E5009778A7 /* SettingsStructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStructModel.swift; sourceTree = "<group>"; };
@@ -75,9 +87,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72A6BEBB2BB4354300B7DBAC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				72A6BEBC2BB4355D00B7DBAC /* CoreDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		72A6BEBE2BB43AA900B7DBAC /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				72A6BEBF2BB43AF100B7DBAC /* AddNoteView.swift */,
+				72A6BEC12BB44B9F00B7DBAC /* AddNoteController.swift */,
+				72A6BEC32BB44BAB00B7DBAC /* AddNoteModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		72F536812BA4C443009778A7 = {
 			isa = PBXGroup;
 			children = (
+				72A6BEB72BB4351700B7DBAC /* Notes+CoreDataClass.swift */,
+				72A6BEB82BB4351700B7DBAC /* Notes+CoreDataProperties.swift */,
 				72F5368C2BA4C443009778A7 /* NoteApp */,
 				72F5368B2BA4C443009778A7 /* Products */,
 			);
@@ -94,12 +126,14 @@
 		72F5368C2BA4C443009778A7 /* NoteApp */ = {
 			isa = PBXGroup;
 			children = (
+				72A6BEBB2BB4354300B7DBAC /* Services */,
 				72F536B12BA56D52009778A7 /* Helpers */,
 				72F536A12BA4C4DE009778A7 /* AppDelegate */,
 				72F536A22BA4C50E009778A7 /* Controllers */,
 				72F536A32BA4C550009778A7 /* Resources */,
 				72F536982BA4C445009778A7 /* LaunchScreen.storyboard */,
 				72F5369B2BA4C445009778A7 /* Info.plist */,
+				72A6BEB42BB4342900B7DBAC /* Note.xcdatamodeld */,
 			);
 			path = NoteApp;
 			sourceTree = "<group>";
@@ -118,6 +152,7 @@
 			children = (
 				72F536CB2BAADA54009778A7 /* Onboarding */,
 				72F536B02BA56D1A009778A7 /* Home */,
+				72A6BEBE2BB43AA900B7DBAC /* Add */,
 				72F536BC2BA584E6009778A7 /* Settings */,
 			);
 			path = Controllers;
@@ -159,7 +194,6 @@
 				72F536912BA4C443009778A7 /* HomeView.swift */,
 				72F536B62BA57CDC009778A7 /* HomeController.swift */,
 				72F536B82BA57CF5009778A7 /* HomeModel.swift */,
-				72F536BA2BA57FB7009778A7 /* NoteStructModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -270,23 +304,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				72F536CF2BAADC32009778A7 /* OnboardingCell.swift in Sources */,
+				72A6BEBA2BB4351700B7DBAC /* Notes+CoreDataProperties.swift in Sources */,
 				72F536922BA4C443009778A7 /* HomeView.swift in Sources */,
 				72F536C62BA591E5009778A7 /* SettingsStructModel.swift in Sources */,
+				72A6BEBD2BB4355D00B7DBAC /* CoreDataService.swift in Sources */,
 				72F536B32BA56D63009778A7 /* MakerView.swift in Sources */,
 				72F536C42BA58782009778A7 /* SettingsCell.swift in Sources */,
 				72F536B92BA57CF5009778A7 /* HomeModel.swift in Sources */,
 				72F536A92BA4C6A1009778A7 /* Fonts.swift in Sources */,
 				72F536D32BAAE528009778A7 /* OnboardingModel.swift in Sources */,
 				72F536CA2BA592C4009778A7 /* SettingsModel.swift in Sources */,
+				72A6BEB92BB4351700B7DBAC /* Notes+CoreDataClass.swift in Sources */,
 				72F536D12BAAE51D009778A7 /* OnboardingController.swift in Sources */,
 				72F536A62BA4C56D009778A7 /* Color.swift in Sources */,
-				72F536BB2BA57FB7009778A7 /* NoteStructModel.swift in Sources */,
+				72A6BEC22BB44B9F00B7DBAC /* AddNoteController.swift in Sources */,
 				72F536B72BA57CDC009778A7 /* HomeController.swift in Sources */,
 				72F5368E2BA4C443009778A7 /* AppDelegate.swift in Sources */,
 				72F536C82BA5929B009778A7 /* SettingsController.swift in Sources */,
 				72F536D52BAAE537009778A7 /* OnboardingStructModel.swift in Sources */,
 				72F536B52BA574E7009778A7 /* NoteCell.swift in Sources */,
 				72F536CD2BAADB40009778A7 /* OnboardingView.swift in Sources */,
+				72A6BEB62BB4342900B7DBAC /* Note.xcdatamodeld in Sources */,
+				72A6BEC42BB44BAB00B7DBAC /* AddNoteModel.swift in Sources */,
+				72A6BEC02BB43AF100B7DBAC /* AddNoteView.swift in Sources */,
 				72F536902BA4C443009778A7 /* SceneDelegate.swift in Sources */,
 				72F536C02BA58557009778A7 /* SettingsView.swift in Sources */,
 			);
@@ -501,6 +541,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		72A6BEB42BB4342900B7DBAC /* Note.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				72A6BEB52BB4342900B7DBAC /* Note.xcdatamodel */,
+			);
+			currentVersion = 72A6BEB52BB4342900B7DBAC /* Note.xcdatamodel */;
+			path = Note.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 72F536822BA4C443009778A7 /* Project object */;
 }

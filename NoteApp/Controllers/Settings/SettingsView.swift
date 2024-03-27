@@ -124,6 +124,7 @@ extension SettingsView: SettingsViewProtocol{
 }
 
 extension SettingsView: SettingsCellDelegate {
+    
     func didSwitchOn(isOn: Bool) {
         UserDefaults.standard.setValue(isOn, forKey: "isDarkTheme")
         updateButtonColors()

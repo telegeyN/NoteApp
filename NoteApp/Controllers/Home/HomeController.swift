@@ -10,7 +10,7 @@ import Foundation
 protocol HomeControllerProtocol: AnyObject {
     func onGetNotes()
     
-    func onSuccessNotes(notes: [Note])
+    func onSuccessNotes(notes: [Notes])
 }
 
 class HomeController: HomeControllerProtocol {
@@ -27,7 +27,7 @@ class HomeController: HomeControllerProtocol {
         model?.getNotes()
     }
     
-    func onSuccessNotes(notes: [Note]) {
+    func onSuccessNotes(notes: [Notes]) {
         view?.successNotes(notes: notes)
         
     }

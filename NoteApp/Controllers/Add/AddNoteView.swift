@@ -7,22 +7,37 @@
 
 import UIKit
 
+protocol AddNoteViewProtocol: AnyObject {
+    
+}
+
 class AddNoteView: UIViewController {
     
-    private let coreDataService = CoreDataService.shared
+    private var controller: AddNoteControllerProtocol?
     
-    private lazy var titleTF = MakerView.shared.makeTextField(placeholder: "Title",cornerRadius: 34/2, backgroundColor: .clear, borderWidth: 1)
+    private lazy var titleTF = MakerView.shared.makeTextField(placeholder: "Title",cornerRadius: 34/2, backgroundColor: .white, borderWidth: 1)
     private lazy var noteTV = MakerView.shared.makeTextView(cornerRadius: 34/2)
     private lazy var saveButton = MakerView.shared.makeSimpleButton(title: "Save",titleFont: Fonts.bold.size(14), cornerRadius: 42/2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        controller = AddNoteController(view: self)
         view.backgroundColor = .systemBackground
         setupNavItem()
         setupConstraints()
+        updateSaveButtonState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
+        if isDarkTheme == true {
+            view.overrideUserInterfaceStyle = .dark
+        } else {
+            view.overrideUserInterfaceStyle = .light
+        }
+        updateButtonColors()
+    }
     
     private func setupNavItem() {
         navigationItem.title = "New Note"
@@ -50,6 +65,8 @@ class AddNoteView: UIViewController {
             titleTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
             titleTF.heightAnchor.constraint(equalToConstant: 34)
         ])
+        titleTF.addTarget(self, action: #selector(titleTextFieldDidChange), for: .editingChanged)
+
         
         view.addSubview(saveButton)
         NSLayoutConstraint.activate([
@@ -70,15 +87,30 @@ class AddNoteView: UIViewController {
     
     }
     
-    @objc func saveButtonTapped() {
-        let id = UUID().uuidString
-        let date = Date()
-        coreDataService.addNote(id: id, title: titleTF.text ?? "", description: noteTV.text ?? "", date: date)
+    @objc private func titleTextFieldDidChange() {
+        updateSaveButtonState()
     }
+
+    
+    @objc func saveButtonTapped() {
+        controller?.onAddNote(title: titleTF.text ?? "", description: "description")
+    }
+    
+    private func updateSaveButtonState() {
+        if let titleText = titleTF.text, !titleText.isEmpty {
+            saveButton.isEnabled = true
+            saveButton.backgroundColor = .init(hex: "#FF3D3D")
+        } else {
+            saveButton.isEnabled = false
+            saveButton.backgroundColor = .gray
+        }
+    }
+
     
     private func updateButtonColors() {
         let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
         if isDarkTheme == true {
+            titleTF.layer.borderColor = UIColor.white.cgColor
             navigationItem.leftBarButtonItem?.tintColor = .white
             navigationItem.rightBarButtonItem?.tintColor = .white
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -91,4 +123,7 @@ class AddNoteView: UIViewController {
     
 }
 
+extension AddNoteView: AddNoteViewProtocol{
+    
+}
 

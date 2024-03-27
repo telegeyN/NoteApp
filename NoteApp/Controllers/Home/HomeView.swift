@@ -8,12 +8,12 @@
 import UIKit
 
 protocol HomeViewProtocol: AnyObject {
-    func successNotes(notes: [Note])
+    func successNotes(notes: [Notes])
 }
 
 class HomeView: UIViewController {
     
-    private var notes: [Note] = []
+    private var notes: [Notes] = []
     private var controller: HomeControllerProtocol?
     
     private lazy var noteSearchBar: UISearchBar = {
@@ -49,26 +49,22 @@ class HomeView: UIViewController {
         view.backgroundColor = .systemBackground
         setupNavItem()
         setupConstraints()
-        
-        controller?.onGetNotes()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let isDarkTheme = UserDefaults.standard.bool(forKey: "isDarkTheme")
         if isDarkTheme == true {
             view.overrideUserInterfaceStyle = .dark
         } else {
             view.overrideUserInterfaceStyle = .light
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        controller?.onGetNotes()
         updateButtonColors()
     }
     
     private func setupNavItem() {
+        navigationItem.hidesBackButton = true
         navigationItem.title = "Main"
         let settingsBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsButtonTapped))
         settingsBarButtonItem.tintColor = .black
@@ -114,6 +110,13 @@ class HomeView: UIViewController {
             addButton.heightAnchor.constraint(equalToConstant: 42),
             addButton.widthAnchor.constraint(equalToConstant: 42)
         ])
+        
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func addButtonTapped() {
+        let vc = AddNoteView()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func updateButtonColors() {
@@ -139,7 +142,7 @@ extension HomeView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteCell.reuseId, for: indexPath) as! NoteCell
-        cell.setup(notes: notes[indexPath.row])
+        cell.setup(title: notes[indexPath.row].title ?? "")
         return cell
     }
     
@@ -147,7 +150,7 @@ extension HomeView: UICollectionViewDataSource {
 
 extension HomeView: HomeViewProtocol{
     
-    func successNotes(notes: [Note]){
+    func successNotes(notes: [Notes]){
         self.notes = notes
         notesCollectionView.reloadData()
     }
